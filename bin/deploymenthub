@@ -8,7 +8,7 @@ def main():
     parser = argparse.ArgumentParser(description='CLI client for Deployment Hub.')
     parser.add_argument('--project', '-p', required=True,
                         help='Name of the project you want to deploy or manage.')
-    parser.add_argument('--action', '-a',
+    parser.add_argument('--action', '-a', required=True,
                         help='The action that is requested for the project.')
     parser.add_argument('--branch', '-b',
                         help='Branch you want to deploy.')
@@ -22,17 +22,13 @@ def main():
 
     list_of_projects = ['jaredwines-portfolio', 'home-assistant', 'deployment-hub-server']
 
-    print("project:", project)
-    print("action:", action)
-    print("branch:", branch)
-
     if project in list_of_projects:
-        if branch and action is None:
-            os.system('curl ' + url + '/' + project + '/')
         if branch is None:
-            os.system('curl ' + url + '/' + project + '/' + action + '/')
+            command = ('curl ' + url + '/' + project + '/' + action + '/')
         else:
-            os.system('curl ' + url + '/' + project + '/' + action + '/' + branch + '/')
+            command = ('curl ' + url + '/' + project + '/' + action + '/' + branch + '/')
+
+        os.system(command)
 
     else:
         print("Project does not exist!")

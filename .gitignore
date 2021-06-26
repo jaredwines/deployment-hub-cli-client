@@ -29,3 +29,6 @@ Thumbs.db
 # Common
 *~
 __pycache__
+build
+deploymenthub.egg-info
+dist

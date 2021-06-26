@@ -12,7 +12,7 @@ setup(
     license='MIT',
     author='Jared Wines',
     author_email='contact@jaredwines.com',
-    url='https://github.com/savoirfairelinux/num2words',
+    url='https://github.com/jaredwines/deployment-hub-cli-client',
     packages=find_packages(exclude=['tests']),
     scripts=['bin/deploymenthub'],
 )

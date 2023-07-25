@@ -18,7 +18,7 @@ def main():
     project = args.project
     action = args.action
     branch = args.branch
-    url = "http://192.168.1.254:5000"
+    url = "http://192.168.0.216/:5000"
 
     list_of_projects = ['jaredwines', 'home-assistant', 'deployment-hub', 'alohamillworks', 'coastalteardrops']
 

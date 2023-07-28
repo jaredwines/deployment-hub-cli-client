@@ -13,12 +13,15 @@ def main():
                         help='The action that is requested for the project.')
     parser.add_argument('--branch', '-b',
                         help='Branch you want to deploy.')
+    parser.add_argument('--verbose', '-v', action='store_true',
+                        help='Run in verbose mode.')
     parser.parse_args()
     args = parser.parse_args()
 
     project = args.project
     action = args.action
     branch = args.branch
+    verbose = args.verbose
     url = "http://192.168.0.216:5000"
 
     list_of_projects = ['jaredwines', 'home-assistant', 'deployment-hub', 'alohamillworks', 'coastalteardrops', 'homebridge','deployment-hub-ui']
@@ -29,10 +32,13 @@ def main():
         else:
             command = ('curl ' + url + '/' + project + '/' + action + '/' + branch + '/')
 
-        command_list = json.loads(os.popen(command).read())
+        if verbose:
+            command_list = json.loads(os.popen(command).read())
+            for command in command_list:
+                print(command)
 
-        for command in command_list:
-            print(command)
+        else:
+            os.popen(command)
 
     else:
         print("Project does not exist!")

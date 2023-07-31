@@ -22,7 +22,7 @@ def main():
     action = args.action
     branch = args.branch
     verbose = args.verbose
-    url = "http://192.168.0.216:5000"
+    url = "http://192.168.0.216:5555"
 
     list_of_projects = ['jaredwines', 'home-assistant', 'deployment-hub', 'alohamillworks', 'coastalteardrops', 'homebridge','deployment-hub-ui']
 

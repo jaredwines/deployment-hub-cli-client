@@ -8,7 +8,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name="deploymenthub",
-    version="2.3",
+    version="2.4",
     description='A CLI client for deployment-hub server.',
     license='MIT',
     author='Jared Wines',

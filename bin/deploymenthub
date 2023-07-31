@@ -24,6 +24,7 @@ def main():
     verbose = args.verbose
     url = "http://192.168.0.216:5555"
 
+    #http://192.168.0.216:5555/home-assistant/start/
     list_of_projects = ['jaredwines', 'home-assistant', 'deployment-hub', 'alohamillworks', 'coastalteardrops', 'homebridge','deployment-hub-ui']
 
     if project in list_of_projects:
@@ -32,10 +33,12 @@ def main():
         else:
             command = ('curl ' + url + '/' + project + '/' + action + '/' + branch + '/')
 
+        print(command)
+
         if verbose:
             command_list = json.loads(os.popen(command).read())
-            for command in command_list:
-                print(command)
+            for commandRow in command_list:
+                print(commandRow)
 
         else:
             os.popen(command)

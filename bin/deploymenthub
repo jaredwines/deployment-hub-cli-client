@@ -27,17 +27,22 @@ def main():
     list_of_projects = ['jaredwines', 'home-assistant', 'deployment-hub', 'alohamillworks', 'coastalteardrops', 'homebridge','deployment-hub-ui']
 
     if project in list_of_projects:
-        if branch is None:
+        command = None
+        if verbose:
             command = ('curl ' + url + '/' + project + '/' + action + '/')
         else:
-            command = ('curl ' + url + '/' + project + '/' + action + '/' + branch + '/')
+            command = ('curl -s ' + url + '/' + project + '/' + action + '/')
+
+        if branch is not None:
+            command += branch + '/'
 
         if verbose:
             command_list = json.loads(os.popen(command).read())
             for commandRow in command_list:
                 print(commandRow)
+
         else:
-            os.system(command + " > /dev/null")
+            os.popen(command)
 
     else:
         print("Project does not exist!")

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 import argparse
-import json
 import os
+import json
 
 
 def main():
@@ -24,8 +24,7 @@ def main():
     verbose = args.verbose
     url = "http://192.168.0.216:5555"
 
-    list_of_projects = ['jaredwines', 'home-assistant', 'deployment-hub', 'alohamillworks', 'coastalteardrops',
-                        'homebridge', 'deployment-hub-ui']
+    list_of_projects = ['jaredwines', 'home-assistant', 'deployment-hub', 'alohamillworks', 'coastalteardrops', 'homebridge','deployment-hub-ui']
 
     if project in list_of_projects:
         if branch is None:
@@ -33,11 +32,12 @@ def main():
         else:
             command = ('curl ' + url + '/' + project + '/' + action + '/' + branch + '/')
 
-        command_list = json.loads(os.popen(command).read())
-
         if verbose:
+            command_list = json.loads(os.popen(command).read())
             for commandRow in command_list:
                 print(commandRow)
+        else:
+            os.system(command + " > /dev/null")
 
     else:
         print("Project does not exist!")
